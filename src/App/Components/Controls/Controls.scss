@@ -4,7 +4,10 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 60px;
-  .Button {
 
+  .Button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
