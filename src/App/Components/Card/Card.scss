@@ -1,0 +1,34 @@
+.Card {
+  width: 200px;
+  height: 300px;
+  margin: 15px;
+  background-color: white;
+  .card-container {
+    width: 100%;
+    height: 100%;
+    .card-header {
+      border-bottom: 1px solid black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      h2 {
+        margin: 0px;
+        padding-left: 5px;
+      }
+      .Button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: darkgrey;
+        font-size: 45px;
+        color: #FFE519;
+        i {
+          padding-top: 3px;
+        }
+      }
+    }
+  }
+}

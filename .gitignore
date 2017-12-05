@@ -25,3 +25,5 @@ package-lock.json
 # css files
 
 *.css
+
+!index.css

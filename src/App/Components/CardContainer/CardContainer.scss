@@ -1,7 +1,16 @@
 .CardContainer {
   width: 90%;
-  height: 200px;
+  min-height: 200px;
   margin: 0px auto;
   background-color: #18212B;
+  display: flex;
+
+  h3 {
+    color: white;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+    margin: 60px;
+  }
 
 }
