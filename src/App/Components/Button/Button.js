@@ -3,9 +3,11 @@ import './Button.css';
 
 const Button = (props) => {
 
+  const favorites = props.favorites ? (<div className="favorites">{props.favorites}</div>) : null;
+
   return (
     <div className="Button">
-      me button
+      {props.type}{favorites}
     </div>
   );
 }

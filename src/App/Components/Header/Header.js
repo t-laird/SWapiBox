@@ -8,7 +8,7 @@ const Header = (props) => {
   return (
     <div className="Header">
       <h1>SWAPI-BOX</h1>
-      <Button />
+      <Button type="View Favorites" favorites={props.numFavorites}/>
     </div>
   );
 }
