@@ -6,9 +6,9 @@ const Controls = (props) => {
 
   return (
     <div className="Controls">
-      <Button type="people" />
-      <Button type="planets" />
-      <Button type="vehicles" />
+      <Button type="people" icon="icon-person"/>
+      <Button type="planets" icon="icon-globe" />
+      <Button type="vehicles" icon="icon-rocket" />
     </div>
   );
 }
