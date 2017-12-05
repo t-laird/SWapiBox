@@ -1,5 +1,6 @@
 .Controls {
   width: 90%;
+  max-width: 500px;
   margin: 0px auto;
   display: flex;
   justify-content: space-around;
@@ -9,5 +10,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 7px 7px 7px 0px darkgrey;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 120px;
+    transition: 0.7s;
+    &:hover {
+      box-shadow: 1px 1px 1px 0px darkgrey;
+      
+    }
   }
 }

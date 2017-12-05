@@ -1,7 +1,19 @@
+@import '../../../fontello-3ab05325/css/fontello.css';
+
 .Header {
-  height: 120px;
+  height: 80px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid darkgrey;
+  width: 95%;
+  margin: 0px auto;
+  margin-bottom: 25px;
+
+  h1 {
+    font-size: 60px;
+  }
+
 
   .Button {
     position: absolute;
@@ -9,19 +21,28 @@
     align-items: center;
     justify-content: space-between;
     right: 10px;
-    top: 10px;
+    top: 20px;
     padding-left: 10px;
-
-    .favorites {
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: 14px;    
+    box-shadow: 7px 7px 7px 0px darkgrey;
+    transition: 0.7s;
+    &:hover {
+      box-shadow: 1px 1px 1px 0px darkgrey;
+    }
+    .icon-star {
       background-color: whitesmoke;
+      font-size: 16px;
       color: black;
-      width: 25px;
+      width: 40px;
       height: 25px;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-right: 5px;
 
-      margin-right: 10px;
+      margin-right: 7px;
     }
     
   }
