@@ -56,12 +56,28 @@
 
         }
 
-        .icon-star-empty:hover:before{
-          content: "\e804";
+        .icon-star-empty {
+          transition: 0.3s;
+          &:hover {
+            transform: rotate(30deg);
+            transform-origin: center;
+          }
+        }
+        
+        .icon-star {
+          transition: 0.3s;
+          &:hover {
+            transform: rotate(-30deg);
+            transform-origin: center;
+            }
         }
 
+        .icon-star-empty:hover:before{
+          // transform: rotate(360deg);
+        }
+        
         .icon-star:hover:before {
-          content: "\e805";
+          // transform: rotate(360deg);
         }
       }
     }
