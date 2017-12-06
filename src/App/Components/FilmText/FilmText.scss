@@ -37,6 +37,9 @@
 
 
     .text-container {
+      h2 {
+        text-align: center;
+      }
       position: relative;
       top: 9999px;
       transform-origin: 50% 100%;
@@ -49,7 +52,7 @@
     width: 100%;
     text-align: center;
     margin: 0px;
-    margin-bottom: -15px;
+    margin-bottom: 5px;
     z-index: 10;
   }
 
@@ -65,7 +68,7 @@
 @keyframes textAnimation {
   0% {
     display: inline;
-    top: 1100px;
+    top: 1400px;
     transform: rotateX(10deg) translateZ(0);
   }
   100% {

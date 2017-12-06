@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './CardContainer.css';
 import Card from '../Card/Card';
 
 const CardContainer = (props) => {
 
-  const displayVehicles = props.currentCards === 'vehicles';
+  const displayVehicles = props.currentData === 'vehicles';
   const displayPeople = props.currentData === 'people';
   const displayPlanets = props.currentData === 'planets';
   const displayPlaceholder = props.currentData === null;
@@ -27,13 +27,15 @@ const CardContainer = (props) => {
   const placeholder = displayPlaceholder ? 
                         <h3>Click one of the options above to display information</h3>
                         : null; 
-  
+  console.log(displayVehicles);
   return (
     <div className="CardContainer">
-      {placeholder}
-      {vehicleCards}
-      {peopleCards}
-      {planetCards}
+      <div className="row-wrapper">
+        {placeholder}
+        {vehicleCards}
+        {peopleCards}
+        {planetCards}      
+      </div>
     </div>
   );
 }

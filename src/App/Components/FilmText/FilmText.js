@@ -1,7 +1,6 @@
 import React from 'react';
 import './FilmText.css';
 import SWLogo from '../../../Assets/SWlogo.png';
-import Button from '../Button/Button';
 
 const FilmText = (props) => {
   console.log(props);
@@ -12,7 +11,11 @@ const FilmText = (props) => {
       </div>
       <div className="openingText">
         <div className="text-container">
-          {props.filmData.filmText}
+          <h1>Episode {props.filmData.episode}</h1>
+          <h2>{props.filmData.filmName.toUpperCase()}</h2>
+          {props.filmData.filmText[0]}<br /> <br /> 
+          {props.filmData.filmText[1]}<br /> <br />    
+          {props.filmData.filmText[2]}<br />  <br />
         </div>
       
       </div>

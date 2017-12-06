@@ -1,17 +1,60 @@
 .CardContainer {
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   min-height: 200px;
   margin: 0px auto;
-  background-color: #18212B;
-  display: flex;
-  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0);
+  
+  .row-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1650px;
+    width: 1650px;
+  }
 
   h3 {
     color: white;
     width: 100%;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
     margin: 60px;
   }
-
 }
+
+@media screen and (max-width: 2050px){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 1320px;
+      width: 1320px;
+    }
+  }
+}
+
+@media screen and (max-width: 1720px){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 990px;
+      width: 990px;
+    }
+  }
+}
+
+@media screen and (max-width: 1390px){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 660px;
+      width: 660px;
+    }
+  }
+}
+
+@media screen and (max-width: 1060){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 330px;
+      width: 330px;
+    }
+  }
+}
+

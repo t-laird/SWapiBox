@@ -1,34 +1,114 @@
+
+@import '../../../fontello-3ab05325/css/fontello.css';
+
 .Card {
-  width: 200px;
-  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.769);
+  border: 1px solid white;
+  box-sizing: border-box;
   margin: 15px;
-  background-color: white;
+  border-radius: 20px;
+  transition: 0.5s;
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.44);
+  }
+
   .card-container {
     width: 100%;
-    height: 100%;
     .card-header {
-      border-bottom: 1px solid black;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      height: 50px;
+      width: 100%;
+      height: 70px;
+      box-sizing: border-box;
       h2 {
-        margin: 0px;
-        padding-left: 5px;
+        color: white;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      i {
+        margin: 10px 10px 0px 0px;
+        font-size: 50px;
+        color: white;          
+        width: 64px;
+        height: 64px;
       }
       .Button {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
-        background-color: darkgrey;
-        font-size: 45px;
-        color: #FFE519;
+        height: 64px;
+        margin: 10px 10px 0px 0px;
+        width: 64px;
         i {
-          padding-top: 3px;
+          margin: 0px;
+          
+          font-size: 50px;
+          color: #FFE519;
+
+        }
+
+        .icon-star-empty:hover:before{
+          content: "\e804";
+        }
+
+        .icon-star:hover:before {
+          content: "\e805";
         }
       }
+    }
+    table {
+      height: 330px;
+      width: 100%;
+      tbody {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        tr {
+          display: flex;
+          justify-content: flex-start;
+          box-sizing: border-box;
+          width: 80%;
+          margin: 0px auto;
+          border-bottom: 1px solid #FFE519;
+          &:nth-last-child(1) {
+            border-bottom: none;
+          }
+
+          td {
+            display: flex;
+            padding: 25px 0px;
+            box-sizing: border-box;
+            align-items: flex-start;
+            color: white;
+            width: 40%;
+            &:nth-child(1) {
+              padding-right: 10px;
+            }
+            &:nth-child(2) {
+              justify-content: center;
+              text-align: center;
+            }
+           
+          }
+          td.key-highlight {
+            color: #FFE519;
+            width: 60%;
+          }
+        }
+      }
+
     }
   }
 }

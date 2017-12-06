@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+
 .Controls {
   width: 90%;
-  max-width: 500px;
+  max-width: 750px;
   margin: 0px auto;
   display: flex;
   justify-content: space-around;
@@ -10,14 +13,30 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 7px 7px 7px 0px darkgrey;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    padding-left: 20px;
     border-radius: 7px;
     cursor: pointer;
-    width: 120px;
+    width: 200px;
+    height: 80px;
     transition: 0.7s;
+    font-size: 40px;
+    font-family: 'Lobster', cursive;
+    background-color: rgba(255, 255, 255, 0.783);
+    color: black;
     &:hover {
-      box-shadow: 1px 1px 1px 0px darkgrey;
+      transform: rotate(20deg);
       
+    }
+  }
+
+  .Button.selected {
+    border: 3px solid white;
+    background-color: rgba(0, 0, 0, 0.803);
+    color: white;
+    &:hover{
+      transform: rotate(-20deg);
     }
   }
 }
