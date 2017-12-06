@@ -3,83 +3,82 @@ import './Card.css';
 import Button from '../Button/Button';
 
 const Card = (props) => {
-
-  const personCard = props.person ? (
+  const personCard = props.cardData.homeworld ? (
     <div className="card-container">
       <div className="card-header">
         <i className="icon-person"></i>
-        <h2>{props.person.name}</h2>
-        <Button buttonClass="Button" icon="icon-star-empty" favoriteCard={props.favoriteCard} card={props.person}/>
+        <h2>{props.cardData.name}</h2>
+        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
       </div>
       <table>
       <tbody>
         <tr>
           <td className="key-highlight">Species:</td>
-          <td>{props.person.species}</td>
+          <td>{props.cardData.species}</td>
         </tr>
         <tr>
           <td className="key-highlight">Homeworld:</td>
-          <td>{props.person.homeworld}</td>
+          <td>{props.cardData.homeworld}</td>
         </tr>
         <tr>
           <td className="key-highlight">Population of Homeworld:</td>
-          <td>{props.person.population}</td>
+          <td>{props.cardData.population}</td>
         </tr>
       </tbody>
       </table>
     </div>
   ) : null;
 
-  const planetCard = props.planet? (
+  const planetCard = props.cardData.terrain? (
     <div className="card-container">    
       <div className="card-header">
         <i className="icon-globe"></i>
-        <h2>{props.planet.name}</h2>
-        <Button buttonClass="Button" icon="icon-star-empty" favoriteCard={props.favoriteCard} card={props.planet}/>
+        <h2>{props.cardData.name}</h2>
+        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
       </div>
       <table>
         <tbody>
           <tr>
             <td className="key-highlight">Terrain:</td>
-            <td>{props.planet.terrain}</td>
+            <td>{props.cardData.terrain}</td>
           </tr>
           <tr>
             <td className="key-highlight">Population:</td>
-            <td>{props.planet.population}</td>
+            <td>{props.cardData.population}</td>
           </tr>
           <tr>
             <td className="key-highlight">Climate:</td>
-            <td>{props.planet.climate}</td>
+            <td>{props.cardData.climate}</td>
           </tr>
           <tr>
             <td className="key-highlight">Notable Residents: </td>
-            <td>{props.planet.residents}</td>
+            <td>{props.cardData.residents}</td>
           </tr>
         </tbody>
       </table>
     </div>
   ) : null;
 
-  const vehicleCard = props.vehicle ? (
+  const vehicleCard = props.cardData.class ? (
     <div className="card-container">    
       <div className="card-header">
         <i className="icon-rocket"></i>
-        <h2>{props.vehicle.name}</h2>
-        <Button buttonClass="Button" icon="icon-star-empty" favoriteCard={props.favoriteCard} card={props.vehicle}/>
+        <h2>{props.cardData.name}</h2>
+        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
       </div>
       <table>
         <tbody>
           <tr>
             <td className="key-highlight">Model:</td>
-            <td>{props.vehicle.model}</td>
+            <td>{props.cardData.model}</td>
           </tr>
           <tr>
             <td className="key-highlight">Class:</td>
-            <td>{props.vehicle.class}</td>
+            <td>{props.cardData.class}</td>
           </tr>
           <tr>
             <td className="key-highlight">No. Passengers:</td>
-            <td>{props.vehicle.passengers}</td>
+            <td>{props.cardData.passengers}</td>
           </tr>
         </tbody>
       </table>
