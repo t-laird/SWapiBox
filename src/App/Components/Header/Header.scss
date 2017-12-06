@@ -47,10 +47,8 @@
     font-family: 'Lobster', cursive;
     color: black;
     background-color: rgba(255, 255, 255, 0.783);
-    box-shadow: 7px 7px 7px 0px darkgrey;
     transition: 0.7s;
     &:hover {
-      box-shadow: 1px 1px 1px 0px darkgrey;
       transform: rotate(20deg);      
     }
     .icon-star {
@@ -66,5 +64,17 @@
       margin-right: 7px;
     }
     
+  }
+
+  .Button.selected {
+    border: 3px solid white;
+    background-color: rgba(0, 0, 0, 0.803);
+    color: white;
+    &:hover{
+      transform: rotate(-20deg);
+    }
+    i {
+      color: white;
+    }
   }
 }

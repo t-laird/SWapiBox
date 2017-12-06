@@ -113,10 +113,19 @@ class App extends Component {
     })
   }
 
-  favoriteCard = (card) => {
-    this.setState({
-      favoritedCards: [...this.state.favoritedCards, card]
-    });
+  favoriteCard = (type, card) => {
+    const findCardInFavorites = this.state.favorites.find( favorite => favorite === card);
+
+    if (findCardInFavorites === undefined) {
+      this.setState({
+        favorites: [...this.state.favorites, card]
+      });
+    } else {
+      const removeCardFromFavorites = this.state.favorites.filter( favorite => favorite !== card);
+      this.setState({
+        favorites: removeCardFromFavorites
+      });
+    }
   }
 
 
@@ -129,9 +138,20 @@ class App extends Component {
             filmData={this.state.filmData} />
         </div>
         <div className="right-container">
-          <Header numFavorites={this.state.favorites.length}/>
-          <Controls currentData={this.state.currentData} selectData={this.selectDataType} />
-          <CardContainer currentData={this.state.currentData} people={this.state.peopleData} vehicles={this.state.vehicleData} planets={this.state.planetData} />
+          <Header 
+            numFavorites={this.state.favorites.length} 
+            currentData={this.state.currentData} 
+            selectData={this.selectDataType}/>
+          <Controls 
+            currentData={this.state.currentData} 
+            selectData={this.selectDataType} />
+          <CardContainer 
+            currentData={this.state.currentData} 
+            people={this.state.peopleData} 
+            vehicles={this.state.vehicleData} 
+            planets={this.state.planetData} 
+            favorites={this.state.favorites} 
+            favoriteCard={this.favoriteCard} />
         </div>
       </div>
     );
