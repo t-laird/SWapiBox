@@ -4,7 +4,7 @@ import SWLogo from '../../../Assets/SWlogo.png';
 import Button from '../Button/Button';
 
 const FilmText = (props) => {
-
+  console.log(props);
   return (
     <div className="FilmText">
       <div className="logo-container">
@@ -12,13 +12,12 @@ const FilmText = (props) => {
       </div>
       <div className="openingText">
         <div className="text-container">
-          {props.filmText}
+          {props.filmData.filmText}
         </div>
       
       </div>
-      <h1>{props.filmName}</h1>
-      <h3>{props.filmYear}</h3>
-      {/* <Button /> */}
+      <h1>{props.filmData.filmName}</h1>
+      <h3>{props.filmData.filmYear}</h3>
     </div>
   );
 }
