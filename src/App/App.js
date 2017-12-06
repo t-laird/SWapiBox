@@ -12,12 +12,12 @@ class App extends Component {
       filmData: {
         filmName: '',
         filmYear: '',
-        filmText: ''
+        filmText: []
       },
       vehicleData: [],
       peopleData: [],
       planetData: [],
-      numFavorites: 5,
+      favorites: [],
       filmTextOpen: true,
       currentData: null
     }
@@ -77,8 +77,11 @@ class App extends Component {
         return residentParse.name;
       });
       const residentNames = await Promise.all(residentPromises);
+        const cleanResidentNames = residentNames.length ?
+          residentNames.join('\n')
+          : 'none';
 
-      return {name: planet.name, terrain: planet.terrain, population: planet.population, climate: planet.climate, residents: residentNames};
+      return {name: planet.name, terrain: planet.terrain, population: planet.population, climate: planet.climate, residents: cleanResidentNames};
     });
 
     return Promise.all(planetPromises);
@@ -87,13 +90,20 @@ class App extends Component {
   async fetchFilmData() {
     const randomFilm = Math.floor(Math.random() * 7 + 1);
     const dataRequest = await fetch(`https://swapi.co/api/films/${randomFilm}/`);
-    const jsonData = await dataRequest.json()
+    const jsonData = await dataRequest.json();
+
+    const splitTextRegex = new RegExp(/\s{3}/, 'g');
+    
+    const splitTextArray = jsonData.opening_crawl.split(splitTextRegex);    
     
     const filmName = jsonData.title;
     const filmYear = jsonData.release_date;
-    const filmText = jsonData.opening_crawl;
+    const filmText = splitTextArray;
+    const episodeNumber = jsonData.episode_id;
 
-    return {filmName, filmYear, filmText};
+    const convertNumToNumeral = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII'};
+
+    return {filmName, filmYear, filmText, episode: convertNumToNumeral[episodeNumber]};
   }
 
 
@@ -119,8 +129,8 @@ class App extends Component {
             filmData={this.state.filmData} />
         </div>
         <div className="right-container">
-          <Header numFavorites={this.state.numFavorites}/>
-          <Controls selectData={this.selectDataType} />
+          <Header numFavorites={this.state.favorites.length}/>
+          <Controls currentData={this.state.currentData} selectData={this.selectDataType} />
           <CardContainer currentData={this.state.currentData} people={this.state.peopleData} vehicles={this.state.vehicleData} planets={this.state.planetData} />
         </div>
       </div>
