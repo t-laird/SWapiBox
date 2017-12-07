@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     height: 600px;
-    width: 100%;
+    width: 400px;
     perspective: 400px;
     color: #feda4a;
     font-family: 'Roboto', sans-serif;
@@ -34,7 +34,14 @@
     line-height: 150%;
     text-align: justify;
     overflow: hidden;
-
+    // background-image: url('../../../Assets/starwarsI.png');
+    img {
+      min-width: 400px;
+      width: 400px;
+      display: flex;
+      margin-left: 223px;
+      animation: showPoster 50s linear;
+    }
 
     .text-container {
       h2 {
@@ -44,7 +51,7 @@
       top: 9999px;
       transform-origin: 50% 100%;
 
-      animation: textAnimation 180s linear;
+      animation: textAnimation 50s linear;
     }
   }
 
@@ -73,7 +80,20 @@
   }
   100% {
     display: inline;
-    top: -6000px;
+    top: -1666px;
     transform: rotateX(40deg) translateZ(-500px);
+  }
+}
+
+@keyframes showPoster {
+  0% {
+    position: absolute;
+    left: -2800px;
+    
+  }
+  
+  100% {
+    position: absolute;
+    left: -2800px;
   }
 }
