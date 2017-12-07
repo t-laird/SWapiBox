@@ -9,11 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      filmData: {
-        filmName: '',
-        filmYear: '',
-        filmText: []
-      },
+      filmData: [],
       vehicleData: [],
       peopleData: [],
       planetData: [],
@@ -86,7 +82,7 @@ class App extends Component {
         favorites = checkLocalFavorites;
       }
 
-      this.setState({peopleData, planetData, vehicleData, filmData, favorites});
+      setTimeout(()=> {this.setState({peopleData, planetData, vehicleData, filmData, favorites}); }, 3000);
   }
 
   async fetchVehicleData() {
@@ -138,22 +134,10 @@ class App extends Component {
   }
 
   async fetchFilmData() {
-    const randomFilm = Math.floor(Math.random() * 7 + 1);
-    const dataRequest = await fetch(`https://swapi.co/api/films/${randomFilm}/`);
+    const dataRequest = await fetch('https://swapi.co/api/films/');
     const jsonData = await dataRequest.json();
 
-    const splitTextRegex = new RegExp(/\s{3}/, 'g');
-    
-    const splitTextArray = jsonData.opening_crawl.split(splitTextRegex);    
-    
-    const filmName = jsonData.title;
-    const filmYear = jsonData.release_date;
-    const filmText = splitTextArray;
-    const episodeNumber = jsonData.episode_id;
-
-    const convertNumToNumeral = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII'};
-
-    return {filmName, filmYear, filmText, episode: convertNumToNumeral[episodeNumber]};
+    return jsonData.results;
   }
 
 
@@ -184,30 +168,39 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state);
+    const dataFetched = this.state.filmData.length;
+    const appContent = dataFetched ?  (<div className="App">
+                                        <div className="left-container">
+                                          <FilmText    
+                                            filmData={this.state.filmData} />
+                                        </div>
+                                        <div className="right-container">
+                                          <Header 
+                                            numFavorites={this.state.favorites.length} 
+                                            currentData={this.state.currentData} 
+                                            selectData={this.selectDataType}/>
+                                          <Controls 
+                                            currentData={this.state.currentData} 
+                                            selectData={this.selectDataType} />
+                                          <CardContainer 
+                                            currentData={this.state.currentData} 
+                                            people={this.state.peopleData} 
+                                            vehicles={this.state.vehicleData} 
+                                            planets={this.state.planetData} 
+                                            favorites={this.state.favorites} 
+                                            favoriteCard={this.favoriteCard} />
+                                        </div>
+                                      </div>)
+                                      : (<div className="Loading">
+                                            <div className="content-wrap">
+                                              <h1>Data is Loading! Please wait...</h1>
+                                              <i className="icon-spin6"></i>
+                                          </div>
+                                        </div>);
+
+                                        console.log(appContent);
     return (
-      <div className="App">
-        <div className="left-container">
-          <FilmText    
-            filmData={this.state.filmData} />
-        </div>
-        <div className="right-container">
-          <Header 
-            numFavorites={this.state.favorites.length} 
-            currentData={this.state.currentData} 
-            selectData={this.selectDataType}/>
-          <Controls 
-            currentData={this.state.currentData} 
-            selectData={this.selectDataType} />
-          <CardContainer 
-            currentData={this.state.currentData} 
-            people={this.state.peopleData} 
-            vehicles={this.state.vehicleData} 
-            planets={this.state.planetData} 
-            favorites={this.state.favorites} 
-            favoriteCard={this.favoriteCard} />
-        </div>
-      </div>
+      appContent
     );
   }
 }
