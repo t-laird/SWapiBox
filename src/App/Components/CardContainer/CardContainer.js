@@ -34,10 +34,15 @@ const CardContainer = (props) => {
                           return <Card favoriteCard={props.favoriteCard} starClass={starClass} cardData={planet} key={index} />
                         }) : null;
                         
-  const favoriteCards = displayFavorites ?
+  let favoriteCards = displayFavorites ?
                         props.favorites.map( (favorite, index) => {
                             return <Card favoriteCard={props.favoriteCard} starClass={'icon-star'} cardData={favorite} key={index} />
                           }) : null;
+
+  const favoritesEmpty = displayFavorites && props.favorites.length === 0;
+
+  favoriteCards = favoritesEmpty ? <h3>You don't have any favorites yet!</h3> : favoriteCards;
+                      
   
   const placeholder = displayPlaceholder ? 
                           <h3>Click one of the options above to display information</h3>
