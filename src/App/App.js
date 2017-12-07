@@ -25,18 +25,68 @@ class App extends Component {
 
   async componentDidMount() {
     // if (nextProps.currentData === 'vehicles') {
-      const vehicleData = await this.fetchVehicleData();
-      // }
-      // if (nextProps.currentData === 'planets') {
-        const planetData = await this.fetchPlanetData();
-        
-        const peopleData = await this.fetchPeopleData();
+      const checkLocalVehicle = JSON.parse(localStorage.getItem('j1okzybVehicle'));
+      const checkLocalPlanet = JSON.parse(localStorage.getItem('j1okzybPlanet'));
+      const checkLocalPeople = JSON.parse(localStorage.getItem('j1okzybPeople'));
+      const checkLocalFilms = JSON.parse(localStorage.getItem('j1okzybFilms'));
+      const checkLocalFavorites = JSON.parse(localStorage.getItem('j1okzybFavorites'));
 
-        const filmData = await this.fetchFilmData();
+      let planetData;
+      let peopleData;
+      let vehicleData;
+      let filmData;
+      let favorites;
 
+      if (!checkLocalVehicle) {
+        vehicleData = await this.fetchVehicleData();
+        localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
+        console.log('used fetch');
+      } else {
+        vehicleData = checkLocalVehicle;
+        console.log('used localstorage');
+      }
 
-        this.setState({peopleData, planetData, vehicleData, filmData});
-    // }
+      if (!checkLocalPlanet) {
+        planetData = await this.fetchPlanetData();
+        localStorage.setItem('j1okzybPlanet', JSON.stringify(planetData));
+        console.log('used fetch');
+      } else {
+        planetData = checkLocalPlanet;
+        console.log('used localstorage');
+      }
+
+      if (!checkLocalPeople) {
+        peopleData = await this.fetchPeopleData();
+        localStorage.setItem('j1okzybPeople', JSON.stringify(peopleData));
+        console.log('used fetch');
+      } else {
+        peopleData = checkLocalPeople;
+        console.log('used localstorage');
+      }
+      if (!checkLocalVehicle) {
+        vehicleData = await this.fetchVehicleData();
+        localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
+        console.log('used fetch');
+      } else {
+        vehicleData = checkLocalVehicle;
+        console.log('used localstorage');
+      }
+      if (!checkLocalFilms) {
+        filmData = await this.fetchFilmData();
+        localStorage.setItem('j1okzybFilms', JSON.stringify(filmData));
+        console.log('used fetch');
+      } else {
+        filmData = checkLocalFilms;
+        console.log('used localstorage');
+      }
+
+      if(!checkLocalFavorites) {
+        favorites = [];
+      } else {
+        favorites = checkLocalFavorites;
+      }
+
+      this.setState({peopleData, planetData, vehicleData, filmData, favorites});
   }
 
   async fetchVehicleData() {
@@ -114,17 +164,21 @@ class App extends Component {
   }
 
   favoriteCard = (type, card) => {
-    const findCardInFavorites = this.state.favorites.find( favorite => favorite === card);
-
+    const findCardInFavorites = this.state.favorites.find( favorite => favorite.name === card.name);
+    console.log(findCardInFavorites);
     if (findCardInFavorites === undefined) {
       this.setState({
         favorites: [...this.state.favorites, card]
       });
+
+      localStorage.setItem('j1okzybFavorites', JSON.stringify([...this.state.favorites, card]));
     } else {
-      const removeCardFromFavorites = this.state.favorites.filter( favorite => favorite !== card);
+      const removeCardFromFavorites = this.state.favorites.filter( favorite => favorite.name !== card.name );
       this.setState({
         favorites: removeCardFromFavorites
       });
+
+      localStorage.setItem('j1okzybFavorites', JSON.stringify(removeCardFromFavorites));
     }
   }
 
