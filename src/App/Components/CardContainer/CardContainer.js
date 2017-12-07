@@ -14,7 +14,7 @@ const CardContainer = (props) => {
 
   const vehicleCards = displayVehicles ?
                         props.vehicles.map( (vehicle, index) => {
-                          const isFavorited = props.favorites.find( favorite => vehicle === favorite);
+                          const isFavorited = props.favorites.find( favorite => vehicle.name === favorite.name);
                           const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
                           
                           return <Card favoriteCard={props.favoriteCard} starClass={starClass} cardData={vehicle} key={index} />
@@ -22,14 +22,14 @@ const CardContainer = (props) => {
                         
   const peopleCards = displayPeople ?
                         props.people.map( (person, index) => {
-                          const isFavorited = props.favorites.find( favorite => person === favorite);
+                          const isFavorited = props.favorites.find( favorite => person.name === favorite.name);
                           const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
                           return <Card favoriteCard={props.favoriteCard} starClass={starClass} cardData={person} key={index} />
                         }) : null;
                         
   const planetCards = displayPlanets ?
                         props.planets.map( (planet, index) => {
-                          const isFavorited = props.favorites.find( favorite => planet === favorite);
+                          const isFavorited = props.favorites.find( favorite => planet.name === favorite.name);
                           const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
                           return <Card favoriteCard={props.favoriteCard} starClass={starClass} cardData={planet} key={index} />
                         }) : null;
