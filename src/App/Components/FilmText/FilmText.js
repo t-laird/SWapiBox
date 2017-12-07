@@ -1,6 +1,23 @@
 import React from 'react';
 import './FilmText.css';
 import SWLogo from '../../../Assets/SWlogo.png';
+import episodeI from '../../../Assets/starwarsI.png';
+import episodeII from '../../../Assets/starwarsII.png';
+import episodeIII from '../../../Assets/starwarsIII.png';
+import episodeIV from '../../../Assets/starwarsIV.png';
+import episodeV from '../../../Assets/starwarsV.png';
+import episodeVI from '../../../Assets/starwarsVI.png';
+import episodeVII from '../../../Assets/starwarsVII.png';
+
+const posters = {
+  I: episodeI,
+  II: episodeII,
+  III: episodeIII,
+  IV: episodeIV,
+  V: episodeV,
+  VI: episodeVI,
+  VII: episodeVII,
+}
 
 const FilmText = (props) => {
   console.log(props);
@@ -10,6 +27,7 @@ const FilmText = (props) => {
         <img src={SWLogo} alt="StarWars Logo" />
       </div>
       <div className="openingText">
+        <img src={posters[props.filmData.episode]} alt="starwars-poster" />
         <div className="text-container">
           <h1>Episode {props.filmData.episode}</h1>
           <h2>{props.filmData.filmName.toUpperCase()}</h2>
