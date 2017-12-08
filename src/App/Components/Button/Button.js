@@ -16,7 +16,7 @@ const Button = (props) => {
   return (
     <div 
       className={props.buttonClass} 
-      onClick={()=>{buttonFunction(props.type, props.card )}}
+      onClick={()=>{ buttonFunction(props.type, props.card ); }}
     >
       {props.type} {icon} {favorites}
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
 import Button from '../Button/Button';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
   const personCard = props.cardData.homeworld ? (
@@ -8,23 +9,27 @@ const Card = (props) => {
       <div className="card-header">
         <i className="icon-person"></i>
         <h2>{props.cardData.name}</h2>
-        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
+        <Button 
+          buttonClass="Button" 
+          icon={props.starClass} 
+          favoriteCard={props.favoriteCard}
+          card={props.cardData} />
       </div>
       <table>
-      <tbody>
-        <tr>
-          <td className="key-highlight">Species:</td>
-          <td>{props.cardData.species}</td>
-        </tr>
-        <tr>
-          <td className="key-highlight">Homeworld:</td>
-          <td>{props.cardData.homeworld}</td>
-        </tr>
-        <tr>
-          <td className="key-highlight">Population of Homeworld:</td>
-          <td>{props.cardData.population}</td>
-        </tr>
-      </tbody>
+        <tbody>
+          <tr>
+            <td className="key-highlight">Species:</td>
+            <td>{props.cardData.species}</td>
+          </tr>
+          <tr>
+            <td className="key-highlight">Homeworld:</td>
+            <td>{props.cardData.homeworld}</td>
+          </tr>
+          <tr>
+            <td className="key-highlight">Population of Homeworld:</td>
+            <td>{props.cardData.population}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   ) : null;
@@ -34,7 +39,11 @@ const Card = (props) => {
       <div className="card-header">
         <i className="icon-globe"></i>
         <h2>{props.cardData.name}</h2>
-        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
+        <Button 
+          buttonClass="Button" 
+          icon={props.starClass} 
+          favoriteCard={props.favoriteCard} 
+          card={props.cardData} />
       </div>
       <table>
         <tbody>
@@ -64,7 +73,11 @@ const Card = (props) => {
       <div className="card-header">
         <i className="icon-rocket"></i>
         <h2>{props.cardData.name}</h2>
-        <Button buttonClass="Button" icon={props.starClass} favoriteCard={props.favoriteCard} card={props.cardData}/>
+        <Button 
+          buttonClass="Button" 
+          icon={props.starClass} 
+          favoriteCard={props.favoriteCard} 
+          card={props.cardData} />
       </div>
       <table>
         <tbody>
@@ -92,6 +105,22 @@ const Card = (props) => {
       {vehicleCard}
     </div>
   );
-}
+};
 
 export default Card;
+
+Card.propTypes = {
+  cardData: PropTypes.object,
+  ['cardData.homeworld']: PropTypes.string,
+  ['cardData.name']: PropTypes.string,
+  ['cardData.species']: PropTypes.string,
+  ['cardData.population']: PropTypes.string,
+  ['cardData.terrain']: PropTypes.string,
+  ['cardData.climate']: PropTypes.string,
+  ['cardData.residents']: PropTypes.string,
+  ['cardData.class']: PropTypes.string,
+  ['cardData.model']: PropTypes.string,
+  ['cardData.passengers']: PropTypes.string,
+  starClass: PropTypes.string,
+  favoriteCard: PropTypes.func
+};

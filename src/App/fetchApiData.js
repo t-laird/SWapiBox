@@ -1,9 +1,24 @@
 async function fetchSWData() {
-  const checkLocalVehicle = JSON.parse(localStorage.getItem('j1okzybVehicle'));
-  const checkLocalPlanet = JSON.parse(localStorage.getItem('j1okzybPlanet'));
-  const checkLocalPeople = JSON.parse(localStorage.getItem('j1okzybPeople'));
-  const checkLocalFilms = JSON.parse(localStorage.getItem('j1okzybFilms'));
-  const checkLocalFavorites = JSON.parse(localStorage.getItem('j1okzybFavorites'));
+  const checkLocalVehicle = 
+    JSON.parse(
+      localStorage.getItem('j1okzybVehicle')
+    );
+  const checkLocalPlanet = 
+    JSON.parse(
+      localStorage.getItem('j1okzybPlanet')
+    );
+  const checkLocalPeople = 
+    JSON.parse(
+      localStorage.getItem('j1okzybPeople')
+    );
+  const checkLocalFilms = 
+    JSON.parse(
+      localStorage.getItem('j1okzybFilms')
+    );
+  const checkLocalFavorites = 
+    JSON.parse(
+      localStorage.getItem('j1okzybFavorites')
+    );
   
   let planetData;
   let peopleData;
@@ -44,13 +59,13 @@ async function fetchSWData() {
     filmData = checkLocalFilms;
   }
   
-  if(!checkLocalFavorites) {
+  if (!checkLocalFavorites) {
     favorites = [];
   } else {
     favorites = checkLocalFavorites;
   }
   
- return {peopleData, planetData, vehicleData, filmData, favorites};
+  return {peopleData, planetData, vehicleData, filmData, favorites};
 } 
 
 

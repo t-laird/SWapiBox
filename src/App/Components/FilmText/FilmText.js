@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './FilmText.css';
+import PropTypes from 'prop-types';
 import SWLogo from '../../../Assets/SWlogo.png';
 import episodeI from '../../../Assets/starwarsI.png';
 import episodeII from '../../../Assets/starwarsII.png';
@@ -16,8 +17,8 @@ const posters = {
   IV: episodeIV,
   V: episodeV,
   VI: episodeVI,
-  VII: episodeVII,
-}
+  VII: episodeVII
+};
 
 class FilmText extends Component {
   constructor(props) {
@@ -31,7 +32,15 @@ class FilmText extends Component {
     if (this.state.rawData.length > 0) {
       const splitTextRegex = new RegExp(/\s{3}/, 'g');
       const randomNum = Math.floor(Math.random() * 7);
-      const convertNumToNumeral = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII'};
+      const convertNumToNumeral = {
+        1: 'I', 
+        2: 'II', 
+        3: 'III', 
+        4: 'IV', 
+        5: 'V', 
+        6: 'VI', 
+        7: 'VII'
+      };
       
       const randomFilm = this.state.rawData[randomNum];
       const splitTextArray = randomFilm.opening_crawl.split(splitTextRegex);    
@@ -75,3 +84,7 @@ class FilmText extends Component {
 }
 
 export default FilmText;
+
+FilmText.propTypes = {
+  filmData: PropTypes.object
+};
