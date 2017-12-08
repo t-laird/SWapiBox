@@ -96,12 +96,8 @@ export default CardContainer;
 CardContainer.propTypes = {
   currentData: PropTypes.string,
   vehicles: PropTypes.array,
-  ['vehicles.map']: PropTypes.func,
   favorites: PropTypes.array,
-  ['favorites.find']: PropTypes.func,
   favoriteCard: PropTypes.func,
   people: PropTypes.array,
-  ['people.map']: PropTypes.func,
-  planets: PropTypes.array,
-  ['planets.map']: PropTypes.func
+  planets: PropTypes.array
 };
