@@ -63,7 +63,7 @@ const Card = (props) => {
     <div className="Card">
       <div className="card-container">
         <div className="card-header">
-          <i className="icon-person"></i>
+          <i className={props.iconType}></i>
           <h2>{props.cardData.name}</h2>
           <Button 
             buttonClass="Button" 
@@ -86,5 +86,6 @@ export default Card;
 Card.propTypes = {
   cardData: PropTypes.object,
   starClass: PropTypes.string,
-  favoriteCard: PropTypes.func
+  favoriteCard: PropTypes.func,
+  iconType: PropTypes.string
 };

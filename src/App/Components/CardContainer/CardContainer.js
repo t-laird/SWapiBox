@@ -20,6 +20,7 @@ const CardContainer = (props) => {
       
       return <Card 
         favoriteCard={props.favoriteCard} 
+        iconType="icon-rocket"
         starClass={starClass} 
         cardData={vehicle} 
         key={index} />;
@@ -33,7 +34,8 @@ const CardContainer = (props) => {
       const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
       return (
         <Card 
-          favoriteCard={props.favoriteCard} 
+          favoriteCard={props.favoriteCard}
+          iconType="icon-person" 
           starClass={starClass} 
           cardData={person} 
           key={index} /> );
@@ -48,6 +50,7 @@ const CardContainer = (props) => {
       return (
         <Card 
           favoriteCard={props.favoriteCard} 
+          iconType="icon-globe"
           starClass={starClass} 
           cardData={planet} 
           key={index} /> );
