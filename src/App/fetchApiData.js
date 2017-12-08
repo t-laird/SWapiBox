@@ -28,7 +28,6 @@ async function fetchSWData() {
   if (!checkLocalPeople) {
     peopleData = await fetchPeopleData();
     localStorage.setItem('j1okzybPeople', JSON.stringify(peopleData));
-    console.log('used fetch');
   } else {
     peopleData = checkLocalPeople;
   }
@@ -37,7 +36,6 @@ async function fetchSWData() {
     localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
   } else {
     vehicleData = checkLocalVehicle;
-    console.log('used localstorage');
   }
   if (!checkLocalFilms) {
     filmData = await fetchFilmData();
@@ -62,9 +60,13 @@ async function fetchVehicleData() {
   const vehicleData = await vehicleFetch.json();
 
   const cleanVehicleData = vehicleData.results.map( vehicle => {
-    return {name: vehicle.name, model: vehicle.model, class: vehicle.vehicle_class, passengers: vehicle.passengers};
-  })
-  
+    return {
+      name: vehicle.name, 
+      model: vehicle.model, 
+      class: vehicle.vehicle_class, 
+      passengers: vehicle.passengers
+    };
+  });
   return cleanVehicleData;
 }
 
@@ -77,9 +79,14 @@ async function fetchPeopleData() {
     const speciesFetch = await fetch(person.species[0]);
     const species = await speciesFetch.json();
 
-    return {name: person.name, homeworld: homeworld.name, species: species.name, population: homeworld.population};
+    return {
+      name: person.name, 
+      homeworld: homeworld.name, 
+      species: species.name, 
+      population: 
+      homeworld.population
+    };
   });
-
   return Promise.all(peoplePromises);
 }
 
@@ -95,11 +102,17 @@ async function fetchPlanetData() {
       return residentParse.name;
     });
     const residentNames = await Promise.all(residentPromises);
-      const cleanResidentNames = residentNames.length ?
-        residentNames.join('\n')
-        : 'none';
+    const cleanResidentNames = residentNames.length 
+      ? residentNames.join('\n')
+      : 'none';
 
-    return {name: planet.name, terrain: planet.terrain, population: planet.population, climate: planet.climate, residents: cleanResidentNames};
+    return {
+      name: planet.name, 
+      terrain: planet.terrain, 
+      population: planet.population, 
+      climate: planet.climate, 
+      residents: cleanResidentNames
+    };
   });
 
   return Promise.all(planetPromises);
