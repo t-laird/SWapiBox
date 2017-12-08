@@ -22,6 +22,7 @@
     padding-top: 5px;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
+    margin: 0px;
   }
 }
 
@@ -49,10 +50,31 @@
       max-width: 660px;
       width: 660px;
     }
+    h3 {
+      font-size: 50px;
+    }
   }
 }
 
-@media screen and (max-width: 1060){
+@media screen and (max-width: 1060px){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 335px;
+      width: 335px;
+    }
+  }
+}
+
+@media screen and (max-width: 805px){
+  .CardContainer {
+    .row-wrapper {
+      max-width: 660px;
+      width: 660px;
+    }
+  }
+}
+
+@media screen and (max-width: 680px){
   .CardContainer {
     .row-wrapper {
       max-width: 330px;
@@ -60,4 +82,3 @@
     }
   }
 }
-

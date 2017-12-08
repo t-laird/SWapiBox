@@ -100,6 +100,13 @@
           border-bottom: 1px solid #FFE519;
           &:nth-last-child(1) {
             border-bottom: none;
+            td {
+              &:nth-last-child(1) {
+                overflow: scroll;
+                height: 70px;
+
+              }
+            }
           }
 
           td {
