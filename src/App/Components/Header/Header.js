@@ -8,7 +8,6 @@ const Header = (props) => {
   const favoritesSelected = props.currentData === 'View Favorites';
   const favoritesClass = favoritesSelected ? "Button selected" : "Button";
 
-
   return (
     <div className="Header">
       <h1>SW<span>api</span>BOX</h1>

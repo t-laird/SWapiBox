@@ -32,5 +32,5 @@ Button.propTypes = {
   selectData: PropTypes.func,
   buttonClass: PropTypes.string,
   type: PropTypes.string,
-  card: PropTypes.array
+  card: PropTypes.object
 };

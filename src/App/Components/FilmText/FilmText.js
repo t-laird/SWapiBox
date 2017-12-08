@@ -86,5 +86,5 @@ class FilmText extends Component {
 export default FilmText;
 
 FilmText.propTypes = {
-  filmData: PropTypes.object
+  filmData: PropTypes.array
 };
