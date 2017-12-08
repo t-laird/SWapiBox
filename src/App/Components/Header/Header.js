@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Button from '../Button/Button';
+import Proptypes
 
 
 const Header = (props) => {
@@ -18,6 +19,6 @@ const Header = (props) => {
         favorites={props.numFavorites} />
     </div>
   );
-}
+};
 
 export default Header;

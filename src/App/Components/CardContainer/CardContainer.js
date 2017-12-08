@@ -12,13 +12,18 @@ const CardContainer = (props) => {
   const displayPlaceholder = props.currentData === null;
   const displayFavorites = props.currentData === 'View Favorites';
 
-  const vehicleCards = displayVehicles ?
-                        props.vehicles.map( (vehicle, index) => {
-                          const isFavorited = props.favorites.find( favorite => vehicle.name === favorite.name);
-                          const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
-                          
-                          return <Card favoriteCard={props.favoriteCard} starClass={starClass} cardData={vehicle} key={index} />
-                        }) : null;
+  const vehicleCards = displayVehicles 
+    ? props.vehicles.map( (vehicle, index) => {
+      const isFavorited = props.favorites.find( favorite => vehicle.name === favorite.name);
+      const starClass = isFavorited ? 'icon-star' : 'icon-star-empty';
+      
+      return <Card 
+        favoriteCard={props.favoriteCard} 
+        starClass={starClass} 
+        cardData={vehicle} 
+        key={index} />
+    }) 
+    : null;
                         
   const peopleCards = displayPeople ?
                         props.people.map( (person, index) => {

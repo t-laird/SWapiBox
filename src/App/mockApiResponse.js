@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const favorites = [
   {"name":"X-34 landspeeder", "model":"X-34 landspeeder", "class":"repulsorcraft", "passengers":"1"}, {"name":"Hoth","terrain":"tundra, ice caves, mountain ranges","population":"unknown","climate":"frozen","residents":"none"},{"name":"Yavin IV","terrain":"jungle, rainforests","population":"1000","climate":"temperate, tropical","residents":"none"}];
 
