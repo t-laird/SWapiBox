@@ -78,3 +78,90 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .Header {
+    justify-content: space-around;
+    h1 {
+      font-size: 50px;
+      span {
+        font-size: 30px;
+      }
+    }
+    .Button {
+      display: flex;
+      position: static;
+      font-size: 20px;
+      width: 130px;
+      .icon-star {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .Header {
+    h1 {
+      font-size: 42px;
+      padding: 10px;
+      span {
+        font-size: 20px;
+      }
+    }
+    .Button {
+      font-size: 15px;
+      width: 100px;
+      height: 50px;
+      .icon-star {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .Header {
+    h1 {
+      font-size: 65px;
+      padding: 10px;
+      span {
+        font-size: 50px;
+      }
+    }
+    .Button {
+      font-size: 30px;
+      width: 170px;
+      height: 80px;
+      .icon-star {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .Header {
+    flex-wrap: wrap;
+    height: 200px;
+    align-items: flex-start;
+    h1 {
+      width: 90%;
+      margin: 0px;
+      text-align: center;;
+      font-size: 65px;
+      padding: 10px;
+      span {
+        font-size: 50px;
+      }
+    }
+    .Button {
+      width: 70%;
+      font-size: 30px;
+      height: 80px;
+      .icon-star {
+        font-size: 25px;
+      }
+    }
+  }
+}
