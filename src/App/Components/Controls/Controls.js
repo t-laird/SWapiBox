@@ -1,5 +1,6 @@
 import React from 'react';
 import './Controls.css';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 
 const Controls = (props) => {
@@ -13,11 +14,27 @@ const Controls = (props) => {
 
   return (
     <div className="Controls">
-      <Button buttonClass={peopleClass} selectData={props.selectData} type="people" icon="icon-person"/>
-      <Button buttonClass={planetClass} selectData={props.selectData} type="planets" icon="icon-globe" />
-      <Button buttonClass={vehicleClass} selectData={props.selectData} type="vehicles" icon="icon-rocket" />
+      <Button 
+        buttonClass={peopleClass} 
+        selectData={props.selectData} 
+        type="people" icon="icon-person"/>
+      <Button 
+        buttonClass={planetClass} 
+        selectData={props.selectData} 
+        type="planets" 
+        icon="icon-globe" />
+      <Button 
+        buttonClass={vehicleClass} 
+        selectData={props.selectData} 
+        type="vehicles" 
+        icon="icon-rocket" />
     </div>
   );
-}
+};
 
 export default Controls;
+
+Controls.propTypes = {
+  currentData: PropTypes.string,
+  selectData: PropTypes.func
+};

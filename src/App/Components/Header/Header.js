@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Button from '../Button/Button';
-import Proptypes
+import PropTypes from 'prop-types';
 
 
 const Header = (props) => {
@@ -22,3 +22,9 @@ const Header = (props) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  currentData: PropTypes.string,
+  selectData: PropTypes.func,
+  numFavorites: PropTypes.number
+};
