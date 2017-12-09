@@ -7,13 +7,16 @@ import CardContainer from './Components/CardContainer/CardContainer';
 
 import fetchFunctions from './fetchApiData';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch
+  BrowserRouter as Router
 } from 'react-router-dom';
 
 
-const { getFavorites, getFilmsData, getPeopleData, getPlanetsData, getVehicleData } = fetchFunctions;
+const { 
+  getFavorites, 
+  getFilmsData, 
+  getPeopleData, 
+  getPlanetsData, 
+  getVehicleData } = fetchFunctions;
   
 
 class App extends Component {
@@ -33,12 +36,10 @@ class App extends Component {
   async componentDidMount() {
     const filmData = await getFilmsData();
     const favorites = await getFavorites();
-    setTimeout(() => {
       this.setState({
         filmData,
         favorites
       });
-    }, 500);
   }
 
   async fetchCardData(type) {
