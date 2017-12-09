@@ -5,19 +5,11 @@ import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
 
 const Controls = (props) => {
-  const vehiclesSelected = props.currentData === 'vehicles';
-  const planetsSelected = props.currentData === 'planets';
-  const peopleSelected = props.currentData === 'people';
-  
-  const vehicleClass = vehiclesSelected ? "Button selected" : "Button";
-  const planetClass = planetsSelected ? "Button selected" : "Button";
-  const peopleClass = peopleSelected ? "Button selected" : "Button";
-
   return (
     <div className="Controls">
-      <NavLink to='/vehicles' onClick={()=> {props.selectData('vehicles')}} activeClassName='selected'>vehicles</NavLink>
-      <NavLink to='/people' onClick={()=> {props.selectData('people')}} activeClassName='selected'>people</NavLink>
-      <NavLink to='/planets' onClick={()=> {props.selectData('planets')}} activeClassName='selected'>planets</NavLink>
+      <NavLink to='/vehicles' className="Button" onClick={()=> {props.selectData('vehicles')}} activeClassName='Button selected'><i className="icon-rocket"></i>vehicles</NavLink>
+      <NavLink to='/people' className="Button" onClick={()=> {props.selectData('people')}} activeClassName='Button selected'><i className="icon-person"></i>people</NavLink>
+      <NavLink to='/planets' className="Button" onClick={()=> {props.selectData('planets')}} activeClassName='Button selected'><i className="icon-globe"></i>planets</NavLink>
     </div>
   );
 };
