@@ -17,8 +17,10 @@ const Planets = (props) => {
     });
 
   return (
-    <div className="Planets">
-      {planetCards}
+    <div className="CardContainer">
+      <div className="row-wrapper">
+        {planetCards}
+      </div>
     </div>
   );
 }

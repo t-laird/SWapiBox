@@ -17,8 +17,10 @@ const People = (props) => {
     });
 
   return (
-    <div className="People">
-      {peopleCards}
+    <div className="CardContainer">
+      <div className="row-wrapper">
+        {peopleCards}
+      </div>
     </div>
   );
 }

@@ -22,10 +22,12 @@ const Favorites = (props) => {
     : favoriteCards;
 
   return (
-    <div className="Favorites">
-      {favoriteCards}
+    <div className="CardContainer">
+      <div className="row-wrapper">
+        {favoriteCards}
+      </div>
     </div>
   );
-}
+};
 
 export default Favorites;

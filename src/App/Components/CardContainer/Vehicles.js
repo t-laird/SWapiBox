@@ -17,9 +17,10 @@ const Vehicles = (props) => {
       key={index} />;
   })
   return (
-    <div className="Vehicles">
-      {vehicleCards}
-
+    <div className="CardContainer">
+      <div className="row-wrapper">
+        {vehicleCards}
+      </div>
     </div>
   );
 }
