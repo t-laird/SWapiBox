@@ -122,8 +122,20 @@ async function fetchPersonData(url) {
   const personData = await personFetch.json();
   return personData.name;
 }
-
 async function getFilmsData() {
+  const checkLocalFilms = 
+  JSON.parse(
+    localStorage.getItem('j1okzybFilms')
+  ); 
+
+  const filmsData = checkLocalFilms
+    ? checkLocalFilms
+    : await filmsApiFetch();
+
+  return filmsData;
+}
+
+async function filmsApiFetch() {
   const dataRequest = await fetch('https://swapi.co/api/films/');
   const jsonData = await dataRequest.json();
 
