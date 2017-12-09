@@ -15,14 +15,10 @@ const Vehicles = (props) => {
       starClass={starClass} 
       cardData={vehicle} 
       key={index} />;
-  })
+  });
   return (
-    <div className="CardContainer">
-      <div className="row-wrapper">
-        {vehicleCards}
-      </div>
-    </div>
+    vehicleCards
   );
-}
+};
 
 export default Vehicles;

@@ -17,12 +17,8 @@ const People = (props) => {
     });
 
   return (
-    <div className="CardContainer">
-      <div className="row-wrapper">
-        {peopleCards}
-      </div>
-    </div>
+    peopleCards
   );
-}
+};
 
 export default People;
