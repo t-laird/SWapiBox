@@ -18,7 +18,6 @@ const Header = (props) => {
         activeClassName='Button selected'>
         favorites <span><i className="icon-star"></i>{props.numFavorites}</span>
       </NavLink>
-
     </div>
   );
 };
