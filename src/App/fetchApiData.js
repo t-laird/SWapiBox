@@ -1,76 +1,19 @@
-async function fetchSWData() {
-  const checkLocalVehicle = 
-    JSON.parse(
-      localStorage.getItem('j1okzybVehicle')
-    );
-  const checkLocalPlanet = 
-    JSON.parse(
-      localStorage.getItem('j1okzybPlanet')
-    );
-  const checkLocalPeople = 
-    JSON.parse(
-      localStorage.getItem('j1okzybPeople')
-    );
-  const checkLocalFilms = 
-    JSON.parse(
-      localStorage.getItem('j1okzybFilms')
-    );
-  const checkLocalFavorites = 
-    JSON.parse(
-      localStorage.getItem('j1okzybFavorites')
-    );
-  
-  let planetData;
-  let peopleData;
-  let vehicleData;
-  let filmData;
-  let favorites;
-  
-  if (!checkLocalVehicle) {
-    vehicleData = await fetchVehicleData();
-    localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
-  } else {
-    vehicleData = checkLocalVehicle;
-  }
-  
-  if (!checkLocalPlanet) {
-    planetData = await fetchPlanetData();
-    localStorage.setItem('j1okzybPlanet', JSON.stringify(planetData));
-  } else {
-    planetData = checkLocalPlanet;
-  }
-  
-  if (!checkLocalPeople) {
-    peopleData = await fetchPeopleData();
-    localStorage.setItem('j1okzybPeople', JSON.stringify(peopleData));
-  } else {
-    peopleData = checkLocalPeople;
-  }
-  if (!checkLocalVehicle) {
-    vehicleData = await fetchVehicleData();
-    localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
-  } else {
-    vehicleData = checkLocalVehicle;
-  }
-  if (!checkLocalFilms) {
-    filmData = await fetchFilmData();
-    localStorage.setItem('j1okzybFilms', JSON.stringify(filmData));
-  } else {
-    filmData = checkLocalFilms;
-  }
-  
-  if (!checkLocalFavorites) {
-    favorites = [];
-  } else {
-    favorites = checkLocalFavorites;
-  }
-  
-  return {peopleData, planetData, vehicleData, filmData, favorites};
-} 
+async function getVehicleData() {  
+  const localStorageVehicle = 
+  JSON.parse(
+    localStorage.getItem('j1okzybVehicle')
+  );
 
+  const vehicleData = localStorageVehicle 
+    ? localStorageVehicle
+    : await vehicleApiFetch();
 
+  localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
+    
+  return vehicleData;
+}
 
-async function fetchVehicleData() {
+async function vehicleApiFetch() {
   const vehicleFetch = await fetch("https://swapi.co/api/vehicles/");
   const vehicleData = await vehicleFetch.json();
 
@@ -82,17 +25,31 @@ async function fetchVehicleData() {
       passengers: vehicle.passengers
     };
   });
+
   return cleanVehicleData;
 }
 
-async function fetchPeopleData() {
+async function getPeopleData() {
+  const localStoragePeople = 
+  JSON.parse(
+    localStorage.getItem('j1okzybPeople')
+  );
+
+  const peopleData = localStoragePeople 
+    ? localStoragePeople
+    : await peopleApiFetch();
+
+  localStorage.setItem('j1okzybPeople', JSON.stringify(peopleData));
+  
+  return peopleData;  
+}
+
+async function peopleApiFetch() {
   const peopleFetch = await fetch("https://swapi.co/api/people/"); 
   const peopleData = await peopleFetch.json(); 
   const peoplePromises = peopleData.results.map(async(person) => {
-    const homeworldFetch = await fetch(person.homeworld);
-    const homeworld = await homeworldFetch.json();
-    const speciesFetch = await fetch(person.species[0]);
-    const species = await speciesFetch.json();
+    const homeworld = await fetchPlanetData(person.homeworld);
+    const species = await fetchSpeciesData(person.species[0]);
 
     return {
       name: person.name, 
@@ -105,16 +62,43 @@ async function fetchPeopleData() {
   return Promise.all(peoplePromises);
 }
 
-async function fetchPlanetData() {
+async function fetchPlanetData(url) {
+  const homeworldFetch = await fetch(url);
+  const homeworld = await homeworldFetch.json();
+
+  return homeworld;
+}
+
+async function fetchSpeciesData(url) {
+  const speciesFetch = await fetch(url);
+  const species = await speciesFetch.json();
+
+  return species;
+}
+
+async function getPlanetsData() {
+  const localStoragePlanets = 
+  JSON.parse(
+    localStorage.getItem('j1okzybPlanet')
+  );
+
+  const planetsData = localStoragePlanets
+    ? localStoragePlanets
+    : await planetApiFetch();
+
+  localStorage.setItem('j1okzybPlanet', JSON.stringify(planetsData));
+
+  return planetsData;
+}
+
+async function planetApiFetch() {
   const planetFetch = await fetch("https://swapi.co/api/planets/");  
   const planetData = await planetFetch.json();
 
   const planetPromises = planetData.results.map(async(planet) => {
     const planetResidents = planet.residents;
     const residentPromises = planetResidents.map(async(resident) => {
-      const residentData = await fetch(resident);
-      const residentParse = await residentData.json();
-      return residentParse.name;
+      return fetchPersonData(resident);
     });
     const residentNames = await Promise.all(residentPromises);
     const cleanResidentNames = residentNames.length 
@@ -133,7 +117,13 @@ async function fetchPlanetData() {
   return Promise.all(planetPromises);
 }
 
-async function fetchFilmData() {
+async function fetchPersonData(url) {
+  const personFetch = await fetch(url); 
+  const personData = await personFetch.json();
+  return personData.name;
+}
+
+async function getFilmsData() {
   const dataRequest = await fetch('https://swapi.co/api/films/');
   const jsonData = await dataRequest.json();
 
@@ -145,4 +135,16 @@ async function fetchFilmData() {
   return cleanFilmData;
 }
 
-export default fetchSWData;
+async function getFavorites() {
+  const checkLocalFavorites = 
+  JSON.parse(
+    localStorage.getItem('j1okzybFavorites')
+  );
+
+  const favorites = checkLocalFavorites 
+    ? checkLocalFavorites
+    : [];
+  return favorites;
+}
+
+export default { getFilmsData, getVehicleData, getPlanetsData, getPeopleData, getFavorites };
