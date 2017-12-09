@@ -15,6 +15,7 @@ describe('Card tests', () => {
     renderedCard = shallow(
       <Card 
         cardData={mockData}
+        iconType="icon-person"
         favoriteCard={mockFunc}
         starClass="icon-star" />
     );
@@ -35,11 +36,12 @@ describe('Card tests', () => {
       <Card 
         cardData={vehicleData[0]}
         favoriteCard={mockFunc}
+        iconType="icon-rocket"
         starClass="icon-star" />
     );
     const expectedVehicleIconLength = 1;
     const expectedPersonIconLength = 0;
-
+    
     expect(renderedCard.find('.icon-person').length).toEqual(expectedPersonIconLength);
     expect(renderedCard.find('.icon-rocket').length).toEqual(expectedVehicleIconLength);
   }); 
