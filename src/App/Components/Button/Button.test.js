@@ -13,7 +13,7 @@ describe('Button tests', () => {
     renderedButton = shallow(
       <Button 
         icon="icon-star"
-        selectData={mockFunc}
+        favoriteCard={mockFunc}
         buttonClass="Button"
         type="Test Button"
       />
@@ -40,43 +40,16 @@ describe('Button tests', () => {
   });
 
   it('should have the text inside the button as passed via the type prop', () => {
-    const expectedButtonText = "Test Button  ";
+    const expectedButtonText = "Test Button ";
     expect(renderedButton.text()).toEqual(expectedButtonText);
-  });
-
-  it('should have the number of favorites when passed a favorites prop', () => {
-    renderedButton = shallow(
-      <Button 
-        favorites={3} 
-        icon="icon-star" 
-        selectData={mockFunc}
-        buttonClass="Button"
-        type="Test Button" />
-    );
-    const expectedButtonText = "Test Button  3";
-    expect(renderedButton.text()).toEqual(expectedButtonText);
-  });
-
-  it('should call the function passed in to the button via the selectData prop when favoriteCard is not present', () => {
-    const expectedFnCalls = 1;
-    renderedButton.simulate('click');
-    expect(mockFunc.mock.calls.length).toEqual(expectedFnCalls);
   });
 
   it('should call the function passed in to the button via the favoriteCard prop when favoriteCard is present', () => {
-    const favCardFnMock = jest.fn();
     const expectedFavCardFnCalls = 1;
-    renderedButton = shallow(
-      <Button 
-        favorites={3} 
-        icon="icon-star" 
-        buttonClass="Button"
-        favoriteCard={favCardFnMock}
-        type="Test Button" />
-    );
+
     renderedButton.simulate('click');
 
-    expect(favCardFnMock.mock.calls.length).toEqual(expectedFavCardFnCalls);
+    expect(mockFunc.mock.calls.length).toEqual(expectedFavCardFnCalls);
   });
 });
 
