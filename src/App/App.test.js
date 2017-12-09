@@ -17,7 +17,7 @@ describe('App shallow tests', () => {
   });
   
   it('should instantiate the correct components', () => {
-    renderedApp.setState({})
+    renderedApp.setState({filmData: mockApiResponse.filmData})
     console.log(renderedApp.debug());
   });
   
