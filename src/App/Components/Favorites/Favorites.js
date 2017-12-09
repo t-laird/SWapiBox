@@ -4,13 +4,20 @@ import Card from '../Card/Card';
 const Favorites = (props) => {
   let favoriteCards = 
     props.favorites.map( (favorite, index) => {
-      let iconType = favorite.terrain ? "icon-globe" : "icon-rocket"
+      let iconType;
+      if (favorite.homeworld) {
+        iconType = 'icon-person';
+      } else if (favorite.terrain) {
+        iconType = 'icon-globe';
+      } else {
+        iconType = 'icon-rocket';
+      }
       return (
         <Card 
           favoriteCard={props.favoriteCard} 
           starClass={'icon-star'} 
           cardData={favorite} 
-          iconType="icon-person"
+          iconType={iconType}
           key={index} />
       );
     });
@@ -22,11 +29,7 @@ const Favorites = (props) => {
     : favoriteCards;
 
   return (
-    <div className="CardContainer">
-      <div className="row-wrapper">
-        {favoriteCards}
-      </div>
-    </div>
+    favoriteCards
   );
 };
 

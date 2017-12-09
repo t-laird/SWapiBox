@@ -13,20 +13,23 @@
   width: 95%;
   margin: 0px auto;
   margin-bottom: 25px;
-
-  h1 {
-    font-size: 80px;
-    color: black;
-    font-family: 'Lobster', cursive;
-    border-radius: 12px;
-    padding: 10px 20px 20px;
-    background-color: rgba(255, 255, 255, 0.783);
-    transition: 1s;
-    span {
-      font-size: 40px;
-    }
-    &:hover {
-      transform: scale(1.08);
+  
+  .header-nav {
+    text-decoration: none;
+    h1 {
+      font-size: 80px;
+      color: black;
+      font-family: 'Lobster', cursive;
+      border-radius: 12px;
+      padding: 10px 20px 20px;
+      background-color: rgba(255, 255, 255, 0.783);
+      transition: 1s;
+      span {
+        font-size: 40px;
+      }
+      &:hover {
+        transform: scale(1.08);
+      }
     }
   }
 

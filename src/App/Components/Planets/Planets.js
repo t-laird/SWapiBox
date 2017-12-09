@@ -17,12 +17,8 @@ const Planets = (props) => {
     });
 
   return (
-    <div className="CardContainer">
-      <div className="row-wrapper">
-        {planetCards}
-      </div>
-    </div>
+    planetCards
   );
-}
+};
 
 export default Planets;
