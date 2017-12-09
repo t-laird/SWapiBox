@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import mockApiResponse from './mockApiResponse';
 import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 
 global.localStorage = {
   getItem: function(query){ return JSON.stringify(mockApiResponse[query]); },
@@ -10,13 +11,14 @@ global.localStorage = {
 };
 
 describe('App shallow tests', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+  let renderedApp;
+  beforeEach(() => {
+    renderedApp = mount(<App />);
   });
-
-  it('should mount with the correct components', () => {
-    const renderedApp = shallow(<App />);
+  
+  it('should instantiate the correct components', () => {
+    renderedApp.setState({})
+    console.log(renderedApp.debug());
   });
   
 
