@@ -12,11 +12,6 @@ const Header = (props) => {
   return (
     <div className="Header">
       <h1>SW<span>api</span>BOX</h1>
-      {/* <Button 
-        buttonClass={favoritesClass}
-        type="View Favorites" 
-        selectData={props.selectData} 
-        favorites={props.numFavorites} /> */}
       <NavLink to='/favorites' className="Button" activeClassName='Button selected'>favorites <span><i className="icon-star"></i>{props.numFavorites}</span></NavLink>
 
     </div>
