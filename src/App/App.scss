@@ -31,13 +31,19 @@
   height: 100%;
   .content-wrap {
     width: 80%;
-    margin: 0px auto;
+    margin: 30px auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.783);
+    border-radius: 15px;
+    padding: 25px;
+    box-sizing: border-box; 
     h1 {
       font-size: 120px;
       font-family: 'Lobster', cursive;
+      border-radius: 20px;
+      margin: 0px;
     }
   
     i {
