@@ -8,7 +8,8 @@ const CardContainer = (props) => {
   const displayPeople = props.currentData === 'people';
   const displayPlanets = props.currentData === 'planets';
   const displayPlaceholder = props.currentData === null;
-  const displayFavorites = props.currentData === 'View Favorites';
+  const displayFavorites = props.currentData === 'favorites';
+
 
   const vehicleCards = displayVehicles 
     ? props.vehicles.map( (vehicle, index) => {
