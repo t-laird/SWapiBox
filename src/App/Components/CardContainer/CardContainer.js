@@ -1,33 +1,64 @@
 import React from 'react';
 import './CardContainer.css';
-import Card from '../Card/Card';
 import PropTypes from 'prop-types';
-import People from './People';
-import Planets from './Planets';
-import Favorites from './Favorites';
-import Vehicles from './Vehicles';
+import People from '../People/People';
+import Planets from '../Planets/Planets';
+import Favorites from '../Favorites/Favorites';
+import Vehicles from '../Vehicles/Vehicles';
+import Placeholder from '../Placeholder/Placeholder';
 import {
   Route,
   Switch
 } from 'react-router-dom';
 
-
 const CardContainer = (props) => {             
   return (
-    <Switch>
-      <Route path='/people' render={(routeProps) => (
-        <People favoriteCard={props.favoriteCard} peopleData={props.people} favorites={props.favorites} {...routeProps}/>
-      )} />
-      <Route path='/vehicles' render={(routeProps) => (
-        <Vehicles favoriteCard={props.favoriteCard} vehicleData={props.vehicles} favorites={props.favorites} {...routeProps}/>
-      )} />
-      <Route path='/planets' render={(routeProps) => (
-        <Planets {...routeProps} favoriteCard={props.favoriteCard} planetData={props.planets} favorites={props.favorites}/>
-      )} />
-      <Route path='/favorites' render={(routeProps) => (
-        <Favorites {...routeProps} favoriteCard={props.favoriteCard} favorites={props.favorites} />
-      )} />
-    </Switch>
+    <div className="CardContainer">
+      <div className="row-wrapper">
+        <Switch>
+          <Route 
+            exact path='/' 
+            render={(routeProps) => (
+              <Placeholder {...routeProps} />
+            )} />
+          <Route 
+            exact path='/people' 
+            render={(routeProps) => (
+              <People 
+                favoriteCard={props.favoriteCard} 
+                peopleData={props.people} 
+                favorites={props.favorites} 
+                {...routeProps}/>
+            )} />
+          <Route 
+            path='/vehicles' 
+            render={(routeProps) => (
+              <Vehicles 
+                favoriteCard={props.favoriteCard} 
+                vehicleData={props.vehicles} 
+                favorites={props.favorites} 
+                {...routeProps}/>
+            )} />
+          <Route 
+            path='/planets' 
+            render={(routeProps) => (
+              <Planets 
+                {...routeProps} 
+                favoriteCard={props.favoriteCard} 
+                planetData={props.planets} 
+                favorites={props.favorites}/>
+            )} />
+          <Route 
+            path='/favorites' 
+            render={(routeProps) => (
+              <Favorites 
+                {...routeProps} 
+                favoriteCard={props.favoriteCard} 
+                favorites={props.favorites}/>
+            )} />
+        </Switch>
+      </div>
+    </div>
   );
 };
 
