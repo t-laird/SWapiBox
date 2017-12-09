@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = (props) => {
@@ -11,11 +12,13 @@ const Header = (props) => {
   return (
     <div className="Header">
       <h1>SW<span>api</span>BOX</h1>
-      <Button 
+      {/* <Button 
         buttonClass={favoritesClass}
         type="favorites" 
         selectData={props.selectData} 
-        favorites={props.numFavorites} />
+        favorites={props.numFavorites} /> */}
+      <NavLink to='/favorites' className="Button" activeClassName='Button selected'>favorites <span><i className="icon-star"></i>{props.numFavorites}</span></NavLink>
+
     </div>
   );
 };

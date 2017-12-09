@@ -4,9 +4,14 @@ import Header from './Components/Header/Header';
 import FilmText from './Components/FilmText/FilmText';
 import Controls from './Components/Controls/Controls';
 import CardContainer from './Components/CardContainer/CardContainer';
-// import fetchSWData from './fetchApiData';
 
 import fetchFunctions from './fetchApiData';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
 
 const { getFavorites, getFilmsData, getPeopleData, getPlanetsData, getVehicleData } = fetchFunctions;
   
@@ -122,7 +127,9 @@ class App extends Component {
       );
 
     return (
-      appContent
+      <Router>
+        {appContent}
+      </Router>
     );
   }
 }

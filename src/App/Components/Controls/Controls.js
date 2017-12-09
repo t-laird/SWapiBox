@@ -2,32 +2,14 @@ import React from 'react';
 import './Controls.css';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+import { NavLink } from 'react-router-dom';
 
 const Controls = (props) => {
-  const vehiclesSelected = props.currentData === 'vehicles';
-  const planetsSelected = props.currentData === 'planets';
-  const peopleSelected = props.currentData === 'people';
-  
-  const vehicleClass = vehiclesSelected ? "Button selected" : "Button";
-  const planetClass = planetsSelected ? "Button selected" : "Button";
-  const peopleClass = peopleSelected ? "Button selected" : "Button";
-
   return (
     <div className="Controls">
-      <Button 
-        buttonClass={peopleClass} 
-        selectData={props.selectData} 
-        type="people" icon="icon-person"/>
-      <Button 
-        buttonClass={planetClass} 
-        selectData={props.selectData} 
-        type="planets" 
-        icon="icon-globe" />
-      <Button 
-        buttonClass={vehicleClass} 
-        selectData={props.selectData} 
-        type="vehicles" 
-        icon="icon-rocket" />
+      <NavLink to='/vehicles' className="Button" onClick={()=> {props.selectData('vehicles')}} activeClassName='Button selected'><i className="icon-rocket"></i>vehicles</NavLink>
+      <NavLink to='/people' className="Button" onClick={()=> {props.selectData('people')}} activeClassName='Button selected'><i className="icon-person"></i>people</NavLink>
+      <NavLink to='/planets' className="Button" onClick={()=> {props.selectData('planets')}} activeClassName='Button selected'><i className="icon-globe"></i>planets</NavLink>
     </div>
   );
 };
