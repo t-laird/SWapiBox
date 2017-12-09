@@ -17,7 +17,7 @@ describe('App shallow tests', () => {
 
   it('should mount with the correct components', () => {
     const renderedApp = shallow(<App />);
-    console.log(renderedApp.debug());
   });
+  
 
 });
