@@ -2,6 +2,7 @@ import React from 'react';
 import './Controls.css';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+import { NavLink } from 'react-router-dom';
 
 const Controls = (props) => {
   const vehiclesSelected = props.currentData === 'vehicles';
@@ -14,20 +15,9 @@ const Controls = (props) => {
 
   return (
     <div className="Controls">
-      <Button 
-        buttonClass={peopleClass} 
-        selectData={props.selectData} 
-        type="people" icon="icon-person"/>
-      <Button 
-        buttonClass={planetClass} 
-        selectData={props.selectData} 
-        type="planets" 
-        icon="icon-globe" />
-      <Button 
-        buttonClass={vehicleClass} 
-        selectData={props.selectData} 
-        type="vehicles" 
-        icon="icon-rocket" />
+      <NavLink to='/vehicles' onClick={()=> {props.selectData('vehicles')}} activeClassName='selected'>vehicles</NavLink>
+      <NavLink to='/people' onClick={()=> {props.selectData('people')}} activeClassName='selected'>people</NavLink>
+      <NavLink to='/planets' onClick={()=> {props.selectData('planets')}} activeClassName='selected'>planets</NavLink>
     </div>
   );
 };
