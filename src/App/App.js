@@ -4,16 +4,21 @@ import Header from './Components/Header/Header';
 import FilmText from './Components/FilmText/FilmText';
 import Controls from './Components/Controls/Controls';
 import CardContainer from './Components/CardContainer/CardContainer';
-import fetchSWData from './fetchApiData';
+// import fetchSWData from './fetchApiData';
+
+import fetchFunctions from './fetchApiData';
+
+const { getFavorites, getFilmsData, getPeopleData, getPlanetsData, getVehicleData } = fetchFunctions;
+  
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       filmData: [],
-      vehicleData: [],
-      peopleData: [],
-      planetData: [],
+      vehicles: [],
+      people: [],
+      planets: [],
       favorites: [],
       filmTextOpen: true,
       currentData: null
@@ -21,22 +26,34 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const SWData = await fetchSWData();
-    const {peopleData, planetData, vehicleData, filmData, favorites} = SWData;
-
+    const filmData = await getFilmsData();
+    const favorites = await getFavorites();
     setTimeout(() => {
       this.setState({
-        peopleData, 
-        planetData, 
-        vehicleData, 
-        filmData, 
+        filmData,
         favorites
       });
-    }, 5000);
+    }, 500);
+  }
+
+  async fetchCardData(type) {
+    const fetchFunctions = {
+      people: getPeopleData,
+      planets: getPlanetsData,
+      vehicles: getVehicleData
+    };
+
+    const fetchedData = await fetchFunctions[type]();
+    this.setState({
+      [type]: fetchedData
+    });
   }
 
 
   selectDataType = (type) => {
+    const dataAlreadyFetched = this.state[type].length > 0;
+    dataAlreadyFetched ? null : this.fetchCardData(type);
+
     this.setState({
       currentData: type
     });
@@ -87,9 +104,9 @@ class App extends Component {
               selectData={this.selectDataType} />
             <CardContainer 
               currentData={this.state.currentData} 
-              people={this.state.peopleData} 
-              vehicles={this.state.vehicleData} 
-              planets={this.state.planetData} 
+              people={this.state.people} 
+              vehicles={this.state.vehicles} 
+              planets={this.state.planets} 
               favorites={this.state.favorites} 
               favoriteCard={this.favoriteCard} />
           </div>
