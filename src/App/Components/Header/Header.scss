@@ -35,6 +35,7 @@
     position: absolute;
     display: flex;
     align-items: center;
+    text-decoration: none;
     justify-content: space-between;
     right: 30px;
     top: 65px;
@@ -51,17 +52,23 @@
     &:hover {
       transform: rotate(20deg);      
     }
-    .icon-star {
-      font-size: 32px;
-      color: black;
-      width: 70px;
-      height: 70px;
+    span {
       display: flex;
-      justify-content: center;
+      height: 100%;
       align-items: center;
-      padding-right: 5px;
+      margin-right: 10px;
 
-      margin-right: 7px;
+      .icon-star {
+        font-size: 32px;
+        color: black;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: -20px;
+        margin-left: -20px;
+      }
     }
     
   }
