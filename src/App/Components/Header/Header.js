@@ -13,7 +13,7 @@ const Header = (props) => {
       <h1>SW<span>api</span>BOX</h1>
       <Button 
         buttonClass={favoritesClass}
-        type="View Favorites" 
+        type="favorites" 
         selectData={props.selectData} 
         favorites={props.numFavorites} />
     </div>
