@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const Header = (props) => {
-  const favoritesSelected = props.currentData === 'View Favorites';
+  const favoritesSelected = props.currentData === 'favorites';
   const favoritesClass = favoritesSelected ? "Button selected" : "Button";
 
   return (
