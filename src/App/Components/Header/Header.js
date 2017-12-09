@@ -17,7 +17,7 @@ const Header = (props) => {
         type="View Favorites" 
         selectData={props.selectData} 
         favorites={props.numFavorites} /> */}
-      <NavLink to='/favorites' activeClassName='selected'>favorites</NavLink>
+      <NavLink to='/favorites' className="Button" activeClassName='Button selected'>favorites <span><i className="icon-star"></i>{props.numFavorites}</span></NavLink>
 
     </div>
   );
