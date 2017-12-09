@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const Header = (props) => {
-  const favoritesSelected = props.currentData === 'View Favorites';
+  const favoritesSelected = props.currentData === 'favorites';
   const favoritesClass = favoritesSelected ? "Button selected" : "Button";
 
   return (
@@ -14,7 +14,7 @@ const Header = (props) => {
       <h1>SW<span>api</span>BOX</h1>
       {/* <Button 
         buttonClass={favoritesClass}
-        type="View Favorites" 
+        type="favorites" 
         selectData={props.selectData} 
         favorites={props.numFavorites} /> */}
       <NavLink to='/favorites' className="Button" activeClassName='Button selected'>favorites <span><i className="icon-star"></i>{props.numFavorites}</span></NavLink>
