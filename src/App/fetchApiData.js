@@ -1,3 +1,4 @@
+/* eslint-disable */
 async function getVehicleData() {
   try {
     const localStorageVehicle = 
@@ -12,8 +13,7 @@ async function getVehicleData() {
     localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
       
     return vehicleData;
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in vehicle fetch');
     return error;
   }
@@ -33,8 +33,7 @@ async function vehicleApiFetch() {
     });
     
     return cleanVehicleData;
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in vehicle fetch');
     return error;
   }
@@ -72,8 +71,7 @@ async function peopleApiFetch() {
       };
     });
     return Promise.all(peoplePromises);
-  } 
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in people fetch');
     return error;
   }
@@ -85,8 +83,7 @@ async function fetchPlanetData(url) {
     const homeworld = await homeworldFetch.json();
   
     return homeworld;
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in individual planet fetch');
     return error;
   }
@@ -98,8 +95,7 @@ async function fetchSpeciesData(url) {
     const species = await speciesFetch.json();
   
     return species;
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in individual species fetch');
     return error;
   }
@@ -144,17 +140,20 @@ async function planetApiFetch() {
     });
 
     return Promise.all(planetPromises);
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in planet fetch');
     return error;
   }
 }
 
 async function fetchPersonData(url) {
-  const personFetch = await fetch(url); 
-  const personData = await personFetch.json();
-  return personData.name;
+  try {
+    const personFetch = await fetch(url); 
+    const personData = await personFetch.json();
+    return personData.name;
+  } catch (e) {
+    return Error('single person fetch failed');
+  }
 }
 
 async function getFilmsData() {
@@ -180,8 +179,7 @@ async function filmsApiFetch() {
     });
   
     return cleanFilmData;
-  }
-  catch (ex) {
+  } catch (ex) {
     const error = new Error('Fetch failed in film fetch');
     return error;
   }
@@ -199,4 +197,4 @@ async function getFavorites() {
   return favorites;
 }
 
-export default { getFilmsData, getVehicleData, getPlanetsData, getPeopleData, getFavorites };
+export default { getFilmsData, getVehicleData, getPlanetsData, getPeopleData, getFavorites, fetchPersonData, fetchSpeciesData, fetchPlanetData };
