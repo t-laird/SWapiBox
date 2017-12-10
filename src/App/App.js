@@ -56,6 +56,7 @@ class App extends Component {
 
   selectDataType = (type) => {
     const dataAlreadyFetched = this.state[type].length > 0;
+    //eslint-disable-next-line
     dataAlreadyFetched ? null : this.fetchCardData(type);
   }
 
