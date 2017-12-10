@@ -246,7 +246,7 @@ describe('fetch species data tests', () => {
   });
 
   it('should return a cleaned object if the status is ok', async () => {
-    const expectedResponse = {"average_height": "n/a", "average_lifespan": "indefinite", "classification": "artificial", "created": "2014-12-10T15:16:16.259000Z", "designation": "sentient", "edited": "2015-04-17T06:59:43.869528Z", "eye_colors": "n/a", "films": ["https://swapi.co/api/films/2/", "https://swapi.co/api/films/7/", "https://swapi.co/api/films/5/"], "hair_colors": "n/a", "homeworld": null, "language": "n/a", "name": "Droid", "people": ["https://swapi.co/api/people/2/", "https://swapi.co/api/people/3/", "https://swapi.co/api/people/8/"], "skin_colors": "n/a","url": "https://swapi.co/api/species/2/"};
+    const expectedResponse = {"average_height": "n/a", "average_lifespan": "indefinite", "classification": "artificial", "created": "2014-12-10T15:16:16.259000Z", "designation": "sentient", "edited": "2015-04-17T06:59:43.869528Z", "eye_colors": "n/a", "films": ["https://swapi.co/api/films/2/", "https://swapi.co/api/films/7/", "https://swapi.co/api/films/5/"], "hair_colors": "n/a", "homeworld": null, "language": "n/a", "name": "Droid", "people": ["https://swapi.co/api/people/2/", "https://swapi.co/api/people/3/", "https://swapi.co/api/people/8/"], "skin_colors": "n/a", "url": "https://swapi.co/api/species/2/"};
 
     expect(await fetchSpeciesData('https://swapi.co/species/1')).toEqual(expectedResponse);
   });
