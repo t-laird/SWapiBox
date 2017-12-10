@@ -11,21 +11,21 @@ const Controls = (props) => {
         className="Button" 
         onClick={ ()=> { props.selectData('people'); } } 
         activeClassName='Button selected'>
-        <i className="icon-person"></i>people
+        <i className="icon-person"></i><span>people</span>
       </NavLink>
       <NavLink 
         to='/vehicles' 
         className="Button" 
         onClick={ ()=> { props.selectData('vehicles'); } } 
         activeClassName='Button selected'>
-        <i className="icon-rocket"></i>vehicles
+        <i className="icon-rocket"></i><span>vehicles</span>
       </NavLink>
       <NavLink 
         to='/planets' 
         className="Button" 
         onClick={ ()=> { props.selectData('planets'); } } 
         activeClassName='Button selected'>
-        <i className="icon-globe"></i>planets
+        <i className="icon-globe"></i><span>planets</span>
       </NavLink>
     </div>
   );
