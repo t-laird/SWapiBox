@@ -11,7 +11,8 @@ module.exports = {
     "browser": true,
     "mocha": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   // Having a problem with one of these rules? Learn more about it here: https://eslint.org/docs/rules/
   "rules": {
@@ -30,9 +31,8 @@ module.exports = {
     "computed-property-spacing": ["error", "never"],
     "func-call-spacing": ["error", "never"],
     "keyword-spacing": ["error", { "before": true, "after": true }],
-    "max-len": ["warn", 80],
+    "max-len": ["warn", 90],
     "no-duplicate-imports": "error",
-    "id-length": "error",
     "id-blacklist": ["error", "data", "err", "e", "cb", "callback", "payload", "obj", "arr"],
     "max-depth": ["warn", 4]
   },
