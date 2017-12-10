@@ -1,32 +1,43 @@
-async function getVehicleData() {  
-  const localStorageVehicle = 
-  JSON.parse(
-    localStorage.getItem('j1okzybVehicle')
-  );
+async function getVehicleData() {
+  try {
+    const localStorageVehicle = 
+    JSON.parse(
+      localStorage.getItem('j1okzybVehicle')
+    );
 
-  const vehicleData = localStorageVehicle 
-    ? localStorageVehicle
-    : await vehicleApiFetch();
+    const vehicleData = localStorageVehicle 
+      ? localStorageVehicle
+      : await vehicleApiFetch();
 
-  localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
-    
-  return vehicleData;
+    localStorage.setItem('j1okzybVehicle', JSON.stringify(vehicleData));
+      
+    return vehicleData;
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in vehicle fetch');
+    return error;
+  }
 }
 
 async function vehicleApiFetch() {
-  const vehicleFetch = await fetch("https://swapi.co/api/vehicles/");
-  const vehicleData = await vehicleFetch.json();
-
-  const cleanVehicleData = vehicleData.results.map( vehicle => {
-    return {
-      name: vehicle.name, 
-      model: vehicle.model, 
-      class: vehicle.vehicle_class, 
-      passengers: vehicle.passengers
-    };
-  });
-
-  return cleanVehicleData;
+  try {
+    const vehicleFetch = await fetch("https://swapi.co/api/vehicles/");
+    const vehicleData = await vehicleFetch.json();
+    const cleanVehicleData = vehicleData.results.map( vehicle => {
+      return {
+        name: vehicle.name, 
+        model: vehicle.model, 
+        class: vehicle.vehicle_class, 
+        passengers: vehicle.passengers
+      };
+    });
+    
+    return cleanVehicleData;
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in vehicle fetch');
+    return error;
+  }
 }
 
 async function getPeopleData() {
@@ -45,35 +56,53 @@ async function getPeopleData() {
 }
 
 async function peopleApiFetch() {
-  const peopleFetch = await fetch("https://swapi.co/api/people/"); 
-  const peopleData = await peopleFetch.json(); 
-  const peoplePromises = peopleData.results.map(async(person) => {
-    const homeworld = await fetchPlanetData(person.homeworld);
-    const species = await fetchSpeciesData(person.species[0]);
+  try {
+    const peopleFetch = await fetch("https://swapi.co/api/people/"); 
+    const peopleData = await peopleFetch.json(); 
+    const peoplePromises = peopleData.results.map(async(person) => {
+      const homeworld = await fetchPlanetData(person.homeworld);
+      const species = await fetchSpeciesData(person.species[0]);
 
-    return {
-      name: person.name, 
-      homeworld: homeworld.name, 
-      species: species.name, 
-      population: 
-      homeworld.population
-    };
-  });
-  return Promise.all(peoplePromises);
+      return {
+        name: person.name, 
+        homeworld: homeworld.name, 
+        species: species.name, 
+        population: 
+        homeworld.population
+      };
+    });
+    return Promise.all(peoplePromises);
+  } 
+  catch (ex) {
+    const error = new Error('Fetch failed in people fetch');
+    return error;
+  }
 }
 
 async function fetchPlanetData(url) {
-  const homeworldFetch = await fetch(url);
-  const homeworld = await homeworldFetch.json();
-
-  return homeworld;
+  try {
+    const homeworldFetch = await fetch(url);
+    const homeworld = await homeworldFetch.json();
+  
+    return homeworld;
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in individual planet fetch');
+    return error;
+  }
 }
 
 async function fetchSpeciesData(url) {
-  const speciesFetch = await fetch(url);
-  const species = await speciesFetch.json();
-
-  return species;
+  try {
+    const speciesFetch = await fetch(url);
+    const species = await speciesFetch.json();
+  
+    return species;
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in individual species fetch');
+    return error;
+  }
 }
 
 async function getPlanetsData() {
@@ -92,29 +121,34 @@ async function getPlanetsData() {
 }
 
 async function planetApiFetch() {
-  const planetFetch = await fetch("https://swapi.co/api/planets/");  
-  const planetData = await planetFetch.json();
+  try {
+    const planetFetch = await fetch("https://swapi.co/api/planets/");  
+    const planetData = await planetFetch.json();
+    const planetPromises = planetData.results.map(async(planet) => {
+      const planetResidents = planet.residents;
+      const residentPromises = planetResidents.map(async(resident) => {
+        return fetchPersonData(resident);
+      });
+      const residentNames = await Promise.all(residentPromises);
+      const cleanResidentNames = residentNames.length 
+        ? residentNames.join('\n')
+        : 'none';
 
-  const planetPromises = planetData.results.map(async(planet) => {
-    const planetResidents = planet.residents;
-    const residentPromises = planetResidents.map(async(resident) => {
-      return fetchPersonData(resident);
+      return {
+        name: planet.name, 
+        terrain: planet.terrain, 
+        population: planet.population, 
+        climate: planet.climate, 
+        residents: cleanResidentNames
+      };
     });
-    const residentNames = await Promise.all(residentPromises);
-    const cleanResidentNames = residentNames.length 
-      ? residentNames.join('\n')
-      : 'none';
 
-    return {
-      name: planet.name, 
-      terrain: planet.terrain, 
-      population: planet.population, 
-      climate: planet.climate, 
-      residents: cleanResidentNames
-    };
-  });
-
-  return Promise.all(planetPromises);
+    return Promise.all(planetPromises);
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in planet fetch');
+    return error;
+  }
 }
 
 async function fetchPersonData(url) {
@@ -122,6 +156,7 @@ async function fetchPersonData(url) {
   const personData = await personFetch.json();
   return personData.name;
 }
+
 async function getFilmsData() {
   const checkLocalFilms = 
   JSON.parse(
@@ -136,15 +171,20 @@ async function getFilmsData() {
 }
 
 async function filmsApiFetch() {
-  const dataRequest = await fetch('https://swapi.co/api/films/');
-  const jsonData = await dataRequest.json();
-
-  const cleanFilmData = jsonData.results.map( film => {
-    const {title, opening_crawl, episode_id, release_date} = film;
-    return {title, opening_crawl, episode_id, release_date} ;
-  });
-
-  return cleanFilmData;
+  try {
+    const dataRequest = await fetch('https://swapi.co/api/films/');
+    const jsonData = await dataRequest.json();
+    const cleanFilmData = jsonData.results.map( film => {
+      const {title, opening_crawl, episode_id, release_date} = film;
+      return {title, opening_crawl, episode_id, release_date} ;
+    });
+  
+    return cleanFilmData;
+  }
+  catch (ex) {
+    const error = new Error('Fetch failed in film fetch');
+    return error;
+  }
 }
 
 async function getFavorites() {
