@@ -27,19 +27,17 @@ class App extends Component {
       vehicles: [],
       people: [],
       planets: [],
-      favorites: [],
-      filmTextOpen: true,
-      currentData: null
+      favorites: []
     };
   }
 
   async componentDidMount() {
     const filmData = await getFilmsData();
     const favorites = await getFavorites();
-      this.setState({
-        filmData,
-        favorites
-      });
+    this.setState({
+      filmData,
+      favorites
+    });
   }
 
   async fetchCardData(type) {
@@ -59,10 +57,6 @@ class App extends Component {
   selectDataType = (type) => {
     const dataAlreadyFetched = this.state[type].length > 0;
     dataAlreadyFetched ? null : this.fetchCardData(type);
-
-    this.setState({
-      currentData: type
-    });
   }
 
   favoriteCard = (type, card) => {

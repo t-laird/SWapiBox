@@ -7,18 +7,18 @@ const Controls = (props) => {
   return (
     <div className="Controls">
       <NavLink 
-        to='/vehicles' 
-        className="Button" 
-        onClick={ ()=> { props.selectData('vehicles'); } } 
-        activeClassName='Button selected'>
-        <i className="icon-rocket"></i>vehicles
-      </NavLink>
-      <NavLink 
         to='/people'
         className="Button" 
         onClick={ ()=> { props.selectData('people'); } } 
         activeClassName='Button selected'>
         <i className="icon-person"></i>people
+      </NavLink>
+      <NavLink 
+        to='/vehicles' 
+        className="Button" 
+        onClick={ ()=> { props.selectData('vehicles'); } } 
+        activeClassName='Button selected'>
+        <i className="icon-rocket"></i>vehicles
       </NavLink>
       <NavLink 
         to='/planets' 
