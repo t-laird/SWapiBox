@@ -25,7 +25,7 @@ const Favorites = (props) => {
   const favoritesEmpty = props.favorites.length === 0;
 
   favoriteCards = favoritesEmpty 
-    ? (<h3>You don't have any favorites yet!</h3>)
+    ? (<h3>You don&apos;t have any favorites yet!</h3>)
     : favoriteCards;
 
   return (

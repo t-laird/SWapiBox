@@ -1,5 +1,5 @@
+/* eslint-disable max-len */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
 import mockApiResponse from './mockApiResponse';
 import { shallow, mount } from 'enzyme';
@@ -64,8 +64,8 @@ describe('App shallow tests', () => {
 
   it('should not add anything to favorites if there is nothing in favorites', () => {
     global.localStorage = {
-      getItem: function () { return null }
-    }
+      getItem: function () { return null; }
+    };
     const expectedFavorites = [];
 
     renderedApp=shallow(<App />);

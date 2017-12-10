@@ -73,6 +73,7 @@ class FilmText extends Component {
             {filmText[0]}<br /> <br /> 
             {filmText[1]}<br /> <br />    
             {filmText[2]}<br />  <br />
+            {filmText[3]}
           </div>
         
         </div>

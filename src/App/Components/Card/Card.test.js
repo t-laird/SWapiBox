@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Card from './Card';
 import mockApiData from '../../mockApiResponse';
 import { shallow } from 'enzyme';
