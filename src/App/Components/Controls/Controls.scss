@@ -21,13 +21,13 @@
     cursor: pointer;
     width: 200px;
     height: 80px;
-    transition: 0.7s;
+    transition: 0.5s;
     font-size: 40px;
     font-family: 'Lobster', cursive;
     background-color: rgba(255, 255, 255, 0.783);
     color: black;
     &:hover {
-      transform: rotate(20deg);
+      transform: rotate(10deg);
       
     }
   }
@@ -37,7 +37,7 @@
     background-color: rgba(0, 0, 0, 0.803);
     color: white;
     &:hover{
-      transform: rotate(-20deg);
+      transform: rotate(-10deg);
     }
   }
 }
