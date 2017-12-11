@@ -26,4 +26,11 @@ package-lock.json
 
 *.css
 
+!css/
 !index.css
+!animation.css
+!fontello-codes.css
+!fontello-embedded.css
+!fontello-ie7-codes.css
+!fontello-ie7.css
+!fontello.css
