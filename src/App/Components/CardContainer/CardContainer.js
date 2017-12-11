@@ -17,12 +17,12 @@ const CardContainer = (props) => {
       <div className="row-wrapper">
         <Switch>
           <Route 
-            exact path='/' 
+            exact path='/SWapiBox/' 
             render={(routeProps) => (
               <Placeholder {...routeProps} />
             )} />
           <Route 
-            exact path='/people' 
+            exact path='/SWapiBox/people' 
             render={(routeProps) => (
               <People 
                 favoriteCard={props.favoriteCard} 
@@ -31,7 +31,7 @@ const CardContainer = (props) => {
                 {...routeProps}/>
             )} />
           <Route 
-            path='/vehicles' 
+            path='/SWapiBox/vehicles' 
             render={(routeProps) => (
               <Vehicles 
                 favoriteCard={props.favoriteCard} 
@@ -40,7 +40,7 @@ const CardContainer = (props) => {
                 {...routeProps}/>
             )} />
           <Route 
-            path='/planets' 
+            path='/SWapiBox/planets' 
             render={(routeProps) => (
               <Planets 
                 {...routeProps} 
@@ -49,7 +49,7 @@ const CardContainer = (props) => {
                 favorites={props.favorites}/>
             )} />
           <Route 
-            path='/favorites' 
+            path='/SWapiBox/favorites' 
             render={(routeProps) => (
               <Favorites 
                 {...routeProps} 
