@@ -51,9 +51,9 @@
     font-family: 'Lobster', cursive;
     color: black;
     background-color: rgba(255, 255, 255, 0.783);
-    transition: 0.7s;
+    transition: 0.5s;
     &:hover {
-      transform: rotate(20deg);      
+      transform: rotate(10deg);      
     }
     span {
       display: flex;
@@ -81,7 +81,7 @@
     background-color: rgba(0, 0, 0, 0.803);
     color: white;
     &:hover{
-      transform: rotate(-20deg);
+      transform: rotate(-10deg);
     }
     i {
       color: white;
