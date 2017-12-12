@@ -45,7 +45,7 @@ const CardContainer = (props) => {
               <Planets 
                 {...routeProps} 
                 favoriteCard={props.favoriteCard} 
-                planetData={props.planets} 
+                planetData={props.planets}
                 favorites={props.favorites}/>
             )} />
           <Route 
