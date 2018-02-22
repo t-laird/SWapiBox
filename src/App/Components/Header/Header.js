@@ -10,10 +10,10 @@ const Header = (props) => {
     
       <NavLink 
         className="header-nav" 
-        to='/'><h1>SW<span>api</span>BOX</h1>
+        to='/SWapiBox/'><h1>SW<span>api</span>BOX</h1>
       </NavLink>
       <NavLink 
-        to='/favorites' 
+        to='/SWapiBox/favorites' 
         className="Button" 
         activeClassName='Button selected'>
         favorites <span><i className="icon-star"></i>{props.numFavorites}</span>

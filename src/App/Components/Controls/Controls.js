@@ -7,21 +7,21 @@ const Controls = (props) => {
   return (
     <div className="Controls">
       <NavLink 
-        to='/people'
+        to='/SWapiBox/people'
         className="Button" 
         onClick={ ()=> { props.selectData('people'); } } 
         activeClassName='Button selected'>
         <i className="icon-person"></i><span>people</span>
       </NavLink>
       <NavLink 
-        to='/vehicles' 
+        to='/SWapiBox/vehicles' 
         className="Button" 
         onClick={ ()=> { props.selectData('vehicles'); } } 
         activeClassName='Button selected'>
         <i className="icon-rocket"></i><span>vehicles</span>
       </NavLink>
       <NavLink 
-        to='/planets' 
+        to='/SWapiBox/planets' 
         className="Button" 
         onClick={ ()=> { props.selectData('planets'); } } 
         activeClassName='Button selected'>
