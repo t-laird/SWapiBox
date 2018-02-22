@@ -40,16 +40,17 @@ NPM - Node package manager - [Download Here](https://www.npmjs.com/get-npm)
 
 ### Setting up Dev
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+In order to work with the project, clone it down, cd into the directory and install the associated packages.
 
 ```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
+git clone https://github.com/t-laird/SWapiBox
+cd SWapiBox
+npm install
 ```
 
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
+The required node_modules will then be installed in order to appropriately work on the project.
+
+The dev server is started with `npm start` and will default to localhost:3000 if available, and the next incremental port otherwise (3001, 3002, etc.).
 
 
 ### Deploying / Publishing
